@@ -1,6 +1,10 @@
-const client = setupClient();
-sub(client, "tracker");
-listenForMessages();
+module.exports.waitForPositions = waitForPositions;
+
+function waitForPositions() {
+    const client = setupClient();
+    sub(client, "tracker");
+    listenForMessages(client);
+}
 
 function sub(client, topic) {
 	client.subscribe([topic], () => {
@@ -8,7 +12,7 @@ function sub(client, topic) {
 	})
 }
 
-function listenForMessages() {
+function listenForMessages(client) {
 	client.on('message', (topic, payload) => {
 		console.log(payload.toString());
 	})
