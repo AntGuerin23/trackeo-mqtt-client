@@ -1,9 +1,9 @@
 module.exports.waitForPositions = waitForPositions;
 
-function waitForPositions() {
+function waitForPositions(callback) {
     const client = setupClient();
     sub(client, "tracker");
-    listenForMessages(client);
+    listenForMessages(client, callback);
 }
 
 function sub(client, topic) {
@@ -12,10 +12,8 @@ function sub(client, topic) {
 	})
 }
 
-function listenForMessages(client) {
-	client.on('message', (topic, payload) => {
-		console.log(payload.toString());
-	})
+function listenForMessages(client, callback) {
+	client.on('message', (topic, payload) => callback(topic, payload));
 }
 
 function setupClient() {
