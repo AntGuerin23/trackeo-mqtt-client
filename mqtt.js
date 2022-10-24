@@ -2,13 +2,13 @@ module.exports.waitForPositions = waitForPositions;
 
 function waitForPositions(callback) {
     const client = setupClient();
-    sub(client, "tracker");
+    sub(client, "locations");
     listenForMessages(client, callback);
 }
 
 function sub(client, topic) {
 	client.subscribe([topic], () => {
-		console.log(`Subscribed to /${topic}`);
+		console.log(`Subscribed to ${topic}`);
 	})
 }
 

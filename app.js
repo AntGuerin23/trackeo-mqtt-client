@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-
+const locationsBroker = require('./locationBroker');
 const mqtt = require("./mqtt")
-mqtt.waitForPositions(function (client, payload) {
+
+mqtt.waitForPositions(async function (client, payload) {
     console.log(payload.toString());
-    //Write payload in database
+    await locationsBroker.writeLocation(payload);
 });
