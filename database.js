@@ -1,5 +1,5 @@
 require('dotenv').config();
-const database = process.env.DB;
+const database = "trackeo";
 const {ObjectId, MongoClient} = require("mongodb");
 //const url = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@trackeo_database:27017`;
 const url = `mongodb://localhost:27017`;

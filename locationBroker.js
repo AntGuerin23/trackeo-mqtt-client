@@ -8,6 +8,7 @@ exports.writeLocation = async function(location) {
         if (!checkIfFloat(latitude) || !checkIfFloat(longitude)) {
            return; 
         }
+        console.log("inserting...")
         await database.insertOne('locations', {
             latitude: parseFloat(latitude), 
             longitude: parseFloat(longitude)
